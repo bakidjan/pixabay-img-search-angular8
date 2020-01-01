@@ -1,0 +1,28 @@
+<div class="container">
+  <p></p>
+  <div class="card border border-info">
+    <div class="card-header badge-info border border-info">Ajout de commentaire</div>
+    <div class="card-body border border-info">
+      <p></p>
+      <div>
+        <form #f="ngForm" (ngSubmit)="onAddComments(f.value)">
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea required="" class="form-control" name="message" id="message" placeholder="your comment here" ngModel [(ngModel)]="commentaire"></textarea>
+            <p></p>
+            <button [disabled]="!f.valid" class="btn btn-sm btn-success fa fa-plus-circle">Ajouter commentaire</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <p><strong>Comments :</strong></p>
+        <ul class="list-group" *ngIf="comments">
+          <li class="list-group-item" *ngFor="let c of comments">
+            <span class="float-right badge-warning">{{c.date | date : "dd MMM yy à H:mm:ss"}}</span>
+            {{c.message}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
