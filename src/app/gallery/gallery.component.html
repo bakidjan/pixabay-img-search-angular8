@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card border border-info">
+    <div class="card-header">Gallerie de photo</div>
+    <div class="card-body">
+      <form #f="ngForm" (ngSubmit)="onSearchPhoto(f.value)">
+        <div class="form-group">
+          <label for="keyword"></label>
+          <div class="row">
+            <input class="form-control col-4" required="" type="text" name="keyword"
+                   placeholder="Entrer le nom d'une ville" ngModel [(ngModel)]="moCle">
+            <button [disabled]="!f.valid" class="btn btn-sm btn-info fa fa-search col-1.5">Search</button>
+          </div>
+        </div>
+      </form>
+      <p class="text-danger" *ngIf="messageVide">{{messageVide}} <span class="fa fa-smile-o fa-2x"></span></p>
+      <div class="card-columns">
+        <div *ngFor="let p of lesPhotos?.hits | paginate: { itemsPerPage: 5, currentPage: p}">
+          <div class="card border border-info divDimension">
+            <div class="card-header">{{p.tags}}</div>
+            <div class="card-body ">
+              <table>
+                <tbody>
+                <tr>
+                  <td rowspan="2">
+                    <div><img src="{{p.webformatURL}}" alt="" height="100"></div>
+                  </td>
+                  <td><p>Autor : {{p.user}}</p></td>
+                </tr>
+                <tr>
+                  <td><p>Likes : {{p.likes}}</p></td>
+                </tr>
+                <tr>
+                  <td>
+                    <p>UserI : <img src="{{p.userImageURL}}" alt="" height="60" class="rounded-circle"></p></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p></p>
+        </div>
+      </div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
