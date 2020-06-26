@@ -1,7 +1,9 @@
 # PixabayImgSearch
 
 Cette appli permet de consulter une très grosse base de données de photos, illustrations et images.
-Elle est basée sur une API alimentée par des photographes et illustrateurs de la communauté 
+
+
+Elle est basée sur une API alimentée par des photographes et illustrateurs de la communauté.
 
 ## Development server
 
